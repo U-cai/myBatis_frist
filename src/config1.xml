@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd ">
+  
+<configuration>
+<!-- environments 表示mybatis框架配置所需要的环境 -->
+  <environments default="development">
+    <environment id="development">
+    <!-- JDBC:表示的是采用了JDBC中事务提交和回滚的方式来进行管理。默认情况下，事务自动提交是被关系掉的。
+		 MANAGED:自身框架是不会进行事务的管理，这个事务管理会交给容器来进行管理。-->
+      <transactionManager type="JDBC"/>
+      <!-- 数据源的配置 
+			POOLED：当前使用数据库连接池来提提高用户请求数据库的效率。
+			UNPOOLED：不使用数据库连接池。
+		-->
+      
+      <!-- 数据源（数据的数据库来源）的配置 -->
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mybatis/"/>
+        <property name="username" value="root"/>
+        <property name="password" value="$root"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <!-- mapper标签为映射声明标签--声明映射文件所在的xml文件或者类 -->
+  <mappers>
+    <mapper resource="cn/uc/first/bean/userMapper.xml"/>
+  </mappers>
+</configuration>

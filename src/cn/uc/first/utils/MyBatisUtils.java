@@ -1,0 +1,27 @@
+package cn.uc.first.utils;
+
+import java.io.InputStream;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+public class MyBatisUtils {
+	//懒汉模式
+	static SqlSessionFactory factory =null;
+	static String config="config.xml";
+	
+	//获取应用唯一的factory对象
+	private	static SqlSessionFactory factory(){
+		if (factory==null) {		
+				InputStream is=MyBatisUtils.class.getClassLoader().getResourceAsStream(config);
+				factory =new SqlSessionFactoryBuilder().build(is);
+		}
+		return factory;
+	}
+	
+	//使用应用唯一的factory对象打开一个sqlsession对象
+	public static SqlSession openSession(){
+		return factory().openSession();
+	}
+}

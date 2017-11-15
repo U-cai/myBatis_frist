@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--userMapper.xml文件 将User类和数据库 的users表进行关联并建立映射关系-->
+<!-- namespace 为命名空间，声明当前的xml的资源路径，一般讲该文件所在包+mapper名作为命名空间 -->
+<mapper namespace="cn.uc.frist.bean.userMapper">
+	<!--mapper对应的映射标签内部就可以申明sql语句了-->
+    
+    <!--查询语句 paramterType属性声明sql语句的参数类型，resultTypt声明执行后的返回结果-->
+	<select  id="selectAll" resultType="cn.uc.first.bean.Users">
+		select*from users
+	</select>
+	<!-- <insert></insert>
+	<update></update>
+	<delete></delete> -->
+</mapper>
